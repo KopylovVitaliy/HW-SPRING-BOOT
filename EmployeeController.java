@@ -9,7 +9,7 @@ import ru.skypro.lessons.springboot.weblibrary.service.EmployeeService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employee/salary")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
@@ -20,5 +20,21 @@ public class EmployeeController {
     @GetMapping
     public List<Employee> showCounter() {
         return employeeService.getAllEmployees();
+    }
+    @GetMapping("/sum")
+    public double getSalarySum(){
+       return employeeService.salarySum();
+    }
+    @GetMapping("/min")
+    public double getSalaryMin(){
+        return employeeService.minSalary();
+    }
+    @GetMapping("/max")
+    public double getSalaryMax(){
+        return employeeService.maxSalary();
+    }
+    @GetMapping("/high-salary")
+    public List<Employee> getEmployeeHighSalary(){
+        return employeeService.employeeHighSalary();
     }
 }
